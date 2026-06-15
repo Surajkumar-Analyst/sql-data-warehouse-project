@@ -113,7 +113,4 @@ Hi there! I'm **Suraj Kumaar**. I’m passionated Data Engineer & analyts on a m
 
 Let's stay in touch! Feel free to connect with me on the following platforms:  
 
-
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](http://linkedin.com/in/surajkumar-analystt)
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/baraasalkini)
-[![Join](https://img.shields.io/badge/Join-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/@datawithbaraa)
