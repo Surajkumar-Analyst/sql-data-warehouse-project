@@ -113,4 +113,4 @@ Hi there! I'm **Suraj Kumaar**. I’m passionated Data Engineer & analyts on a m
 
 Let's stay in touch! Feel free to connect with me on the following platforms:  
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](http://linkedin.com/in/surajkumar-analystt)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/surajkumar-analytics/)
