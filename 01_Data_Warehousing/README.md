@@ -1,116 +1,270 @@
-# Data Warehouse and Analytics Project
+# 🏗️ SQL Data Warehouse
 
-Welcome to the **Data Warehouse and Analytics Project** repository! 🚀  
-This project demonstrates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights. Designed as a portfolio project, it highlights industry best practices in data engineering and analytics.
+This module contains the complete implementation of a modern SQL Data Warehouse built using **Microsoft SQL Server** and the **Medallion Architecture**. The project demonstrates the complete ETL process—from ingesting raw CSV files to delivering business-ready dimensional models for analytics and reporting.
 
 ---
-## 🏗️ Data Architecture
 
-The data architecture for this project follows Medallion Architecture **Bronze**, **Silver**, and **Gold** layers:
+# 📖 Overview
+
+The objective of this project is to design and implement a scalable data warehouse capable of integrating multiple source systems into a single analytical database.
+
+The warehouse follows the Medallion Architecture, separating data into three layers:
+
+- 🥉 Bronze – Raw source data
+- 🥈 Silver – Cleaned and standardized data
+- 🥇 Gold – Business-ready dimensional model
+
+This layered approach improves data quality, simplifies maintenance, and provides a reliable foundation for downstream analytics.
+
+---
+
+# 🏛️ Medallion Architecture
+
 ![Data Architecture](docs/Data_Architecture.png)
 
-1. **Bronze Layer**: Stores raw data as-is from the source systems. Data is ingested from CSV Files into SQL Server Database.
-2. **Silver Layer**: This layer includes data cleansing, standardization, and normalization processes to prepare data for analysis.
-3. **Gold Layer**: Houses business-ready data modeled into a star schema required for reporting and analytics.
+### Bronze Layer
 
----
-## 📖 Project Overview
+The Bronze layer stores raw data exactly as received from the source systems.
 
-This project involves:
+Characteristics:
 
-1. **Data Architecture**: Designing a Modern Data Warehouse Using Medallion Architecture **Bronze**, **Silver**, and **Gold** layers.
-2. **ETL Pipelines**: Extracting, transforming, and loading data from source systems into the warehouse.
-3. **Data Modeling**: Developing fact and dimension tables optimized for analytical queries.
-4. **Analytics & Reporting**: Creating SQL-based reports and dashboards for actionable insights.
-
-🎯 This repository is an excellent resource for professionals and students looking to showcase expertise in:
-- SQL Development
-- Data Architect
-- Data Engineering  
-- ETL Pipeline Developer  
-- Data Modeling  
-- Data Analytics  
+- Raw CSV ingestion
+- No business transformations
+- Preserves original data
+- Serves as the landing zone for ETL
 
 ---
 
-## 🛠️ Important Links & Tools:
+### Silver Layer
 
-Everything is for Free!
-- **[Datasets](datasets/):** Access to the project dataset (csv files).
-- **[SQL Server Express](https://www.microsoft.com/en-us/sql-server/sql-server-downloads):** Lightweight server for hosting your SQL database.
-- **[SQL Server Management Studio (SSMS)](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16):** GUI for managing and interacting with databases.
-- **[Git Repository](https://github.com/):** Set up a GitHub account and repository to manage, version, and collaborate on your code efficiently.
-- **[DrawIO](https://www.drawio.com/):** Design data architecture, models, flows, and diagrams.
-- **[Notion](https://www.notion.com/templates/sql-data-warehouse-project):** Get the Project Template from Notion
-- **[Notion Project Steps](https://app.notion.com/p/SQL-Data-Warehouse-Project-2e2396a9fb9e80dfad28df48776e525f?source=copy_link):** Access to All Project Phases and Tasks.
+The Silver layer cleans and standardizes the raw data.
 
----
+Transformations include:
 
-## 🚀 Project Requirements
-
-### Building the Data Warehouse (Data Engineering)
-
-#### Objective
-Develop a modern data warehouse using SQL Server to consolidate sales data, enabling analytical reporting and informed decision-making.
-
-#### Specifications
-- **Data Sources**: Import data from two source systems (ERP and CRM) provided as CSV files.
-- **Data Quality**: Cleanse and resolve data quality issues prior to analysis.
-- **Integration**: Combine both sources into a single, user-friendly data model designed for analytical queries.
-- **Scope**: Focus on the latest dataset only; historization of data is not required.
-- **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
+- Removing duplicates
+- Handling NULL values
+- Standardizing formats
+- Data validation
+- Data type conversions
+- Business rule implementation
 
 ---
 
-### BI: Analytics & Reporting (Data Analysis)
+### Gold Layer
 
-#### Objective
-Develop SQL-based analytics to deliver detailed insights into:
-- **Customer Behavior**
-- **Product Performance**
-- **Sales Trends**
+The Gold layer contains business-ready tables designed for analytical workloads.
 
-These insights empower stakeholders with key business metrics, enabling strategic decision-making.  
+Features:
 
-For more details, refer to [docs/requirements.md](docs/requirements.md).
+- Star Schema
+- Dimension Tables
+- Fact Tables
+- Optimized for reporting and analytics
 
-## 📂 Repository Structure
+---
+
+# 📂 Project Structure
+
 ```
-data-warehouse-project/
+01_Data_Warehousing
 │
-├── datasets/                           # Raw datasets used for the project (ERP and CRM data)
+├── datasets
+│   ├── source_crm
+│   └── source_erp
 │
-├── docs/                               # Project documentation and architecture details
-│   ├── etl.drawio                      # Draw.io file shows all different techniquies and methods of ETL
-│   ├── data_architecture.drawio        # Draw.io file shows the project's architecture
-│   ├── data_catalog.md                 # Catalog of datasets, including field descriptions and metadata
-│   ├── data_flow.drawio                # Draw.io file for the data flow diagram
-│   ├── data_models.drawio              # Draw.io file for data models (star schema)
-│   ├── naming-conventions.md           # Consistent naming guidelines for tables, columns, and files
+├── docs
+│   ├── Data_Architecture.png
+│   ├── Data_Catalog.md
+│   ├── Data_model.png
+│   ├── ETL.png
+│   └── Naming_Conventions.md
 │
-├── scripts/                            # SQL scripts for ETL and transformations
-│   ├── bronze/                         # Scripts for extracting and loading raw data
-│   ├── silver/                         # Scripts for cleaning and transforming data
-│   ├── gold/                           # Scripts for creating analytical models
+├── scripts
+│   ├── bronze
+│   │   ├── ddl_bronze.sql
+│   │   └── proc_load_bronze.sql
+│   │
+│   ├── silver
+│   │   ├── ddl_silver.sql
+│   │   ├── proc_load_silver.sql
+│   │   └── placeholder
+│   │
+│   ├── gold
+│   │   └── ddl_gold.sql
+│   │
+│   └── init_database.sql
 │
-├── tests/                              # Test scripts and quality files
+├── tests
+│   ├── quality_check_gold.sql
+│   └── quality_check_silver.sql
 │
-├── README.md                           # Project overview and instructions
-├── LICENSE                             # License information for the repository
-├── .gitignore                          # Files and directories to be ignored by Git
-└── requirements.txt                    # Dependencies and requirements for the project
+└── README.md
 ```
+
 ---
 
+# 📊 Data Sources
 
-## 🛡️ License
+The warehouse integrates data from two operational systems.
 
-This project is licensed under the [MIT License](LICENSE). You are free to use, modify, and share this project with proper attribution.
+### CRM
 
-## 🌟 About Me
+Contains customer and product information.
 
-Hi there! I'm **Suraj Kumaar**. I’m passionated Data Engineer & analyts on a mission explore data and business relations!
+### ERP
 
-Let's stay in touch! Feel free to connect with me on the following platforms:  
+Contains sales transactions and operational business data.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/surajkumar-analytics/)
+Both datasets are provided as CSV files and loaded into SQL Server.
+
+---
+
+# 🔄 ETL Pipeline
+
+![ETL Process](docs/ETL.png)
+
+The ETL workflow consists of the following stages:
+
+1. Initialize the database
+2. Create Bronze tables
+3. Load raw CSV files into Bronze
+4. Create Silver tables
+5. Clean and standardize the data
+6. Create Gold tables
+7. Build analytical data model
+8. Perform data quality validation
+
+---
+
+# ⭐ Data Model
+
+![Data Model](docs/Data_model.png)
+
+The Gold layer follows a **Star Schema** consisting of:
+
+### Dimension Tables
+
+- dim_customers
+- dim_products
+
+### Fact Tables
+
+- fact_sales
+
+This model is optimized for fast analytical queries and reporting.
+
+---
+
+# 📁 Documentation
+
+The **docs** directory contains additional project documentation.
+
+| File | Description |
+|------|-------------|
+| Data_Architecture.png | Medallion architecture diagram |
+| ETL.png | ETL workflow |
+| Data_model.png | Star schema |
+| Data_Catalog.md | Dataset documentation |
+| Naming_Conventions.md | Naming standards used throughout the project |
+
+---
+
+# 🧪 Data Quality Testing
+
+Quality checks are included to ensure the reliability of the warehouse.
+
+Validation includes:
+
+- NULL checks
+- Duplicate detection
+- Referential integrity
+- Data consistency
+- Business rule validation
+
+Test scripts are located in:
+
+```
+tests/
+```
+
+---
+
+# 💻 Technologies Used
+
+- Microsoft SQL Server
+- SQL Server Management Studio (SSMS)
+- T-SQL
+- CSV Files
+- Medallion Architecture
+- Star Schema
+- ETL
+
+---
+
+# 🛠 SQL Concepts Demonstrated
+
+This project showcases practical use of:
+
+- DDL
+- Stored Procedures
+- Views
+- Common Table Expressions (CTEs)
+- Joins
+- CASE Expressions
+- Window Functions
+- Data Cleansing
+- Data Transformation
+- Surrogate Keys
+- Data Modeling
+
+---
+
+# 🚀 Execution Order
+
+Run the SQL scripts in the following order:
+
+```
+1. init_database.sql
+
+2. bronze/
+   ├── ddl_bronze.sql
+   └── proc_load_bronze.sql
+
+3. silver/
+   ├── ddl_silver.sql
+   └── proc_load_silver.sql
+
+4. gold/
+   └── ddl_gold.sql
+
+5. tests/
+   ├── quality_check_silver.sql
+   └── quality_check_gold.sql
+```
+
+---
+
+# 🎯 Project Outcomes
+
+After completing this module, the warehouse provides:
+
+- Clean and validated data
+- Integrated CRM and ERP datasets
+- Star Schema for analytics
+- Business-ready fact and dimension tables
+- Reliable data for reporting and dashboard development
+
+---
+
+# 📚 Learning Outcomes
+
+This project strengthened my understanding of:
+
+- Data Warehouse Design
+- ETL Development
+- Medallion Architecture
+- SQL Server
+- Data Cleaning
+- Data Validation
+- Star Schema Modeling
+- Data Engineering Best Practices
